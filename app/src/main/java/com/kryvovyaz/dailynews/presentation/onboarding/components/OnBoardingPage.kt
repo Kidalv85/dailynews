@@ -1,6 +1,5 @@
 package com.kryvovyaz.dailynews.presentation.onboarding.components
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -23,7 +22,7 @@ import com.kryvovyaz.dailynews.presentation.Dimentions.padding_24
 import com.kryvovyaz.dailynews.presentation.Dimentions.padding_30
 import com.kryvovyaz.dailynews.presentation.onboarding.Page
 import com.kryvovyaz.dailynews.presentation.onboarding.pages
-import com.kryvovyaz.dailynews.ui.theme.NewsAppTheme
+import com.kryvovyaz.dailynews.ui.theme.DailyNewsAppTheme
 
 @Composable
 fun OnBoardingPage(
@@ -60,7 +59,7 @@ fun OnBoardingPage(
 @Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 private fun OnBoardingPagePreview() {
-    NewsAppTheme {
+    DailyNewsAppTheme {
         OnBoardingPage(page = pages[0])
     }
 }

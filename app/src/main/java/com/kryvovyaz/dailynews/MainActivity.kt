@@ -1,7 +1,6 @@
 package com.kryvovyaz.dailynews
 
 import android.os.Bundle
-import android.view.View
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,7 +16,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.kryvovyaz.dailynews.presentation.nvgraph.NavGraph
-import com.kryvovyaz.dailynews.ui.theme.NewsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
