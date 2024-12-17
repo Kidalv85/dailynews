@@ -10,7 +10,7 @@ import com.kryvovyaz.dailynews.domain.usecases.app_entry.ReadAppEntry
 import com.kryvovyaz.dailynews.domain.usecases.app_entry.SaveAppEntry
 import com.kryvovyaz.dailynews.domain.usecases.news.GetNews
 import com.kryvovyaz.dailynews.domain.usecases.news.NewsUseCases
-import com.kryvovyaz.dailynews.repository.NewsRepositoryImpl
+import com.kryvovyaz.dailynews.data.repository.NewsRepositoryImpl
 import com.kryvovyaz.dailynews.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -52,7 +52,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(newsApi: NewsApi): NewsRepository = NewsRepositoryImpl(newsApi)
+    fun provideNewsRepository(
+        newsApi: NewsApi
+    ): NewsRepository {
+        return NewsRepositoryImpl(newsApi)
+    }
 
     @Provides
     @Singleton

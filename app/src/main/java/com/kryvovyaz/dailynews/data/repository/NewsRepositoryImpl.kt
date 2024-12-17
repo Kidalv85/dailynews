@@ -1,4 +1,4 @@
-package com.kryvovyaz.dailynews.repository
+package com.kryvovyaz.dailynews.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.Pager
@@ -23,4 +23,21 @@ class NewsRepositoryImpl(
             }
         ).flow
     }
+
+    override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
+        TODO("Not yet implemented")
+    }
+
+//    override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
+//        return Pager(
+//            config = PagingConfig(pageSize = 10),
+//            pagingSourceFactory = {
+//                SearchNewsPagingSource(
+//                    api = newsApi,
+//                    searchQuery = searchQuery,
+//                    sources = sources.joinToString(separator = ",")
+//                )
+//            }
+//        ).flow
+//    }
 }
