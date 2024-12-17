@@ -3,9 +3,9 @@ package com.kryvovyaz.dailynews.di
 import android.app.Application
 import com.kryvovyaz.dailynews.data.manager.LocalUserManagerImpl
 import com.kryvovyaz.dailynews.domain.manager.LocalUserManager
-import com.kryvovyaz.dailynews.domain.usecases.AppEntryUseCases
-import com.kryvovyaz.dailynews.domain.usecases.ReadAppEntry
-import com.kryvovyaz.dailynews.domain.usecases.SaveAppEntry
+import com.kryvovyaz.dailynews.domain.usecases.app_entry.AppEntryUseCases
+import com.kryvovyaz.dailynews.domain.usecases.app_entry.ReadAppEntry
+import com.kryvovyaz.dailynews.domain.usecases.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

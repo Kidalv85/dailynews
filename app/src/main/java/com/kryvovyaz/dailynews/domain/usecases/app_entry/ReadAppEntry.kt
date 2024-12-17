@@ -1,4 +1,4 @@
-package com.kryvovyaz.dailynews.domain.usecases
+package com.kryvovyaz.dailynews.domain.usecases.app_entry
 
 import com.kryvovyaz.dailynews.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
