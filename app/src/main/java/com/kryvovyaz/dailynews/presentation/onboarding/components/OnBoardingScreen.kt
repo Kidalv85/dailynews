@@ -13,15 +13,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource.Companion.SideEffect
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.kryvovyaz.dailynews.presentation.Dimentions.padding_30
 import com.kryvovyaz.dailynews.presentation.Dimentions.width_52
 import com.kryvovyaz.dailynews.presentation.common.NewsButton
@@ -34,14 +30,6 @@ import kotlinx.coroutines.launch
 fun OnBoardingScreen(
     event: (OnBoardingEvent) -> Unit
 ) {
-    val isSystemInDarkMode = isSystemInDarkTheme()
-    val systemUiColor = rememberSystemUiController()
-    SideEffect {
-        systemUiColor.setSystemBarsColor(
-            color = Color.Black.copy(0.1f),
-            darkIcons = isSystemInDarkMode
-        )
-    }
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
