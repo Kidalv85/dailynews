@@ -10,7 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.kryvovyaz.dailynews.presentation.Dimentions.radius_6
+import com.kryvovyaz.dailynews.ui.theme.WhiteGray
 
 @Composable
 fun NewsButton(
@@ -23,7 +24,7 @@ fun NewsButton(
             contentColor = MaterialTheme.colorScheme.primary,
             containerColor = Color.White
         ),
-        shape = RoundedCornerShape(size = 6.dp)
+        shape = RoundedCornerShape(size = radius_6)
     ) {
         Text(
             text = text,
@@ -42,7 +43,7 @@ fun NewsTextButton(
         Text(
             text = text,
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
-            color = Color.DarkGray
+            color = WhiteGray
         )
     }
 }

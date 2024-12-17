@@ -9,4 +9,6 @@ object Dimentions {
     val size_14 = 14.dp
 
     val width_52 = 52.dp
+
+    val radius_6 = 6.dp
 }

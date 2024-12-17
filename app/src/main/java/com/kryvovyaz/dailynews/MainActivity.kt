@@ -10,8 +10,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import com.kryvovyaz.dailynews.domain.usecases.AppEntryUseCases
+import com.kryvovyaz.dailynews.presentation.onboarding.OnBoardingViewModel
 import com.kryvovyaz.dailynews.presentation.onboarding.components.OnBoardingScreen
 import com.kryvovyaz.dailynews.ui.theme.NewsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,14 +30,19 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
         lifecycleScope.launch {
-            appEntryUseCases.readAppEntry().collect {
+            appEntryUseCases.readAppEntry().collect{
                 Log.d("Vlad",it.toString())
             }
         }
         setContent {
-            NewsAppTheme {
+            NewsAppTheme (
+                dynamicColor = false
+            ){
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    OnBoardingScreen()
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(
+                        event = viewModel::onEvent
+                    )
                 }
             }
         }
