@@ -9,52 +9,41 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import com.kryvovyaz.dailynews.presentation.Dimentions.radius_6
+import androidx.compose.ui.unit.dp
 import com.kryvovyaz.dailynews.ui.theme.WhiteGray
 
 @Composable
 fun NewsButton(
     text: String,
-    onCLick: () -> Unit
+    onClick: () -> Unit,
 ) {
+
     Button(
-        onClick = onCLick,
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            contentColor = MaterialTheme.colorScheme.primary,
-            containerColor = Color.White
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = Color.White
         ),
-        shape = RoundedCornerShape(size = radius_6)
+        shape = RoundedCornerShape(size = 6.dp)
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
+            color = Color.White
         )
     }
-
 }
 
 @Composable
 fun NewsTextButton(
     text: String,
-    onCLick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    TextButton(onClick = onCLick) {
+    TextButton(onClick = onClick) {
         Text(
             text = text,
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
             color = WhiteGray
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun NewsButtonPreview() {
-    MaterialTheme {
-        NewsButton(
-            text = "preview",
-            onCLick = {}
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.kryvovyaz.dailynews
+package com.kryvovyaz.dailynews.presentation.mainActivity
 
 import android.os.Bundle
 
@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.kryvovyaz.dailynews.presentation.nvgraph.NavGraph
+import com.kryvovyaz.dailynews.presentation.navgraph.NavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         actionBar?.hide()
         installSplashScreen().apply {
             setKeepOnScreenCondition {
-                viewModel.splashCondition
+                viewModel.splashCondition.value
             }
         }
 
@@ -41,8 +41,7 @@ class MainActivity : ComponentActivity() {
                 )
             }
             Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                val startDestination = viewModel.startDestination
-                NavGraph(startDestination = startDestination)
+                NavGraph(startDestination = viewModel.startDestination.value)
             }
         }
     }

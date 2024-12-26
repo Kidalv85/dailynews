@@ -18,82 +18,78 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.LazyPagingItems
 import com.kryvovyaz.dailynews.R
 import com.kryvovyaz.dailynews.domain.model.Article
-import com.kryvovyaz.dailynews.presentation.Dimentions.height_32
-import com.kryvovyaz.dailynews.presentation.Dimentions.padding_24
-import com.kryvovyaz.dailynews.presentation.Dimentions.width_150
+import com.kryvovyaz.dailynews.presentation.Dimentions.MediumPadding1
 import com.kryvovyaz.dailynews.presentation.common.ArticlesList
 import com.kryvovyaz.dailynews.presentation.common.SearchBar
-import com.kryvovyaz.dailynews.presentation.nvgraph.Route
 
 @Composable
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
-    navigate: (String) -> Unit
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit
 ) {
+
     val titles by remember {
         derivedStateOf {
             if (articles.itemCount > 10) {
-                articles.itemSnapshotList
-                    .slice(
-                        IntRange(
-                            start = 0,
-                            endInclusive = 9
-                        )
-
-                    )
-                    .joinToString(separator = " \uD83d\udFE5 ") {
-                        it?.title ?: ""
-                    }
+                articles.itemSnapshotList.items
+                    .slice(IntRange(start = 0, endInclusive = 9))
+                    .joinToString(separator = " \uD83D\uDFE5 ") { it.title }
             } else {
                 ""
             }
         }
-
     }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = padding_24)
+            .padding(top = MediumPadding1)
             .statusBarsPadding()
     ) {
         Image(
-            modifier = Modifier
-                .width(width_150)
-                .height(height_32)
-                .padding(horizontal = padding_24),
             painter = painterResource(id = R.drawable.ic_logo),
-            contentDescription = null
+            contentDescription = null,
+            modifier = Modifier
+                .width(150.dp)
+                .height(30.dp)
+                .padding(horizontal = MediumPadding1)
         )
-        Spacer(modifier = Modifier.height(padding_24))
+
+        Spacer(modifier = Modifier.height(MediumPadding1))
+
         SearchBar(
+            modifier = Modifier
+                .padding(horizontal = MediumPadding1)
+                .fillMaxWidth(),
             text = "",
             readOnly = true,
             onValueChange = {},
-            onClick = {
-                navigate(Route.SearchScreen.route)
-            },
-            onSearch = {}
+            onSearch = {},
+            onClick = navigateToSearch
         )
-        Spacer(modifier = Modifier.height(padding_24))
+
+        Spacer(modifier = Modifier.height(MediumPadding1))
+
         Text(
-            text = titles,
-            modifier = Modifier
+            text = titles, modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = padding_24)
-                .basicMarquee(),
-            fontSize = 12.sp,
+                .padding(start = MediumPadding1)
+                .basicMarquee(), fontSize = 12.sp,
             color = colorResource(id = R.color.placeholder)
         )
-        Spacer(modifier = Modifier.height(padding_24))
+
+        Spacer(modifier = Modifier.height(MediumPadding1))
+
         ArticlesList(
-            modifier = Modifier.padding(horizontal = padding_24),
+            modifier = Modifier.padding(horizontal = MediumPadding1),
             articles = articles,
-            onClick = { navigate(Route.DetailsScreen.route) }
+            onClick = navigateToDetails
         )
     }
-
 }

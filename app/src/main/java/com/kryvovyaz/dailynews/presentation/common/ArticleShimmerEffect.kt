@@ -1,6 +1,5 @@
 package com.kryvovyaz.dailynews.presentation.common
 
-import android.content.res.Configuration
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -22,14 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.kryvovyaz.dailynews.R
-import com.kryvovyaz.dailynews.presentation.Dimentions.height_16
-import com.kryvovyaz.dailynews.presentation.Dimentions.height_32
-import com.kryvovyaz.dailynews.presentation.Dimentions.padding_2
-import com.kryvovyaz.dailynews.presentation.Dimentions.padding_24
-import com.kryvovyaz.dailynews.presentation.Dimentions.size_96
-import com.kryvovyaz.dailynews.ui.theme.DailyNewsAppTheme
+import com.kryvovyaz.dailynews.presentation.Dimentions
+import com.kryvovyaz.dailynews.presentation.Dimentions.MediumPadding1
 
 fun Modifier.shimmerEffect() = composed {
     val transition = rememberInfiniteTransition()
@@ -45,48 +40,40 @@ fun Modifier.shimmerEffect() = composed {
 }
 
 @Composable
-fun ArticleCardShimmerEffect(
-    modifier: Modifier = Modifier
-){
-    Row(modifier = modifier) {
+fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+    ) {
         Box(
             modifier = Modifier
-                .size(size_96)
+                .size(Dimentions.ArticleCardSize)
                 .clip(MaterialTheme.shapes.medium)
                 .shimmerEffect()
         )
         Column(
+            verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
-                .padding(horizontal = padding_2)
-                .height(size_96),
-            verticalArrangement = Arrangement.SpaceAround
+                .padding(horizontal = Dimentions.ExtraSmallPadding)
+                .height(Dimentions.ArticleCardSize)
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .height(height_32)
-                    .padding(padding_24)
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .padding(horizontal = MediumPadding1)
                     .shimmerEffect()
             )
-
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(height_16)
-                        .padding(padding_24)
+                        .fillMaxWidth(0.5f)
+                        .padding(horizontal = MediumPadding1)
+                        .height(15.dp)
                         .shimmerEffect()
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun ArticleCardShimmerEffectPreview(){
-    DailyNewsAppTheme {
-        ArticleCardShimmerEffect()
     }
 }

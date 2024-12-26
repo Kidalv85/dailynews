@@ -27,7 +27,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kryvovyaz.dailynews.R
-import com.kryvovyaz.dailynews.presentation.Dimentions.size_20
+import com.kryvovyaz.dailynews.presentation.Dimentions.IconSize
 import com.kryvovyaz.dailynews.ui.theme.DailyNewsAppTheme
 
 @Composable
@@ -62,7 +62,7 @@ fun SearchBar(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_search),
                     contentDescription = null,
-                    modifier = Modifier.size(size_20),
+                    modifier = Modifier.size(IconSize),
                     tint = colorResource(id = R.color.body)
                 )
             },
@@ -111,9 +111,8 @@ fun Modifier.searchBar(): Modifier = composed {
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-private fun SearchBarPreview() {
+fun SearchBarPreview() {
     DailyNewsAppTheme {
-        SearchBar(text = "", onValueChange = {}, readOnly = false) {
-        }
+        SearchBar(text = "", onValueChange = {}, readOnly = false, onSearch = {})
     }
 }
